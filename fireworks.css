@@ -1,0 +1,155 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  background: #000;
+}
+
+#sky {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(ellipse at bottom, #020111 0%, #000 100%);
+  overflow: hidden;
+}
+
+/* Moon with static image */
+.moon {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 200px;
+  height: 200px;
+  z-index: 1;
+  filter: 
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.7))
+    drop-shadow(0 0 20px rgba(255, 255, 255, 0.5))
+    drop-shadow(0 0 30px rgba(255, 255, 255, 0.3));
+  /* Force visibility */
+  opacity: 1 !important;
+}
+
+ 
+/* Stars and other elements remain the same */
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 0;
+}
+
+.stars::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white"/><circle cx="50" cy="30" r="1" fill="white"/><circle cx="80" cy="10" r="1" fill="white"/><circle cx="10" cy="70" r="1" fill="white"/><circle cx="40" cy="80" r="1" fill="white"/><circle cx="90" cy="60" r="1" fill="white"/><circle cx="30" cy="40" r="1" fill="white"/><circle cx="70" cy="90" r="1" fill="white"/></svg>');
+  background-size: 100px 100px;
+  animation: twinkle 5s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+#fireworksCanvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+#birthdayMessage {
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: bold;
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+  z-index: 3;
+  animation: fadeIn 3s ease forwards 8s;
+  opacity: 0;
+}
+
+.neon-text {
+  color: #fff;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px #0ff,
+    0 0 80px #0ff,
+    0 0 90px #0ff,
+    0 0 100px #0ff,
+    0 0 150px #0ff;
+  animation: flicker 1.5s infinite alternate;
+}
+
+#finalBtn {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 30px;
+  font-size: 18px;
+  background: #ff1493;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff1493;
+  opacity: 0;
+  animation: fadeIn 2s ease forwards 12s;
+  z-index: 3;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#finalBtn:hover {
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 0 25px #ff1493;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px #0ff,
+      0 0 80px #0ff,
+      0 0 90px #0ff,
+      0 0 100px #0ff,
+      0 0 150px #0ff;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .moon {
+    width: 120px;
+    height: 120px;
+    right: 20px;
+    top: 20px;
+  }
+  
+  #birthdayMessage {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+  }
+  
+  #finalBtn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}

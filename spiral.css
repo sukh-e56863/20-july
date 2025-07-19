@@ -1,0 +1,237 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: #111;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-container {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  padding: 20px;
+}
+
+.gallery-title {
+  color: #ff2d75;
+  text-shadow: 0 0 10px rgba(255, 45, 117, 0.7);
+  margin-bottom: 30px;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 70vh;
+  width: 100%;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  width: 70%;
+  height: 80%;
+  transition: all 0.5s ease;
+  opacity: 0;
+  z-index: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 10;
+  box-shadow: 0 0 30px #ff2d75;
+  transform: translateX(0) scale(1);
+}
+
+.slide.prev {
+  opacity: 0.5;
+  z-index: 5;
+  transform: translateX(-80%) scale(0.8);
+}
+
+.slide.next {
+  opacity: 0.5;
+  z-index: 5;
+  transform: translateX(80%) scale(0.8);
+}
+
+.nav-btn {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 45, 117, 0.3);
+  border: 2px solid #ff2d75;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 0 20px;
+  transition: all 0.3s;
+  z-index: 20;
+  flex-shrink: 0;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 45, 117, 0.7);
+  box-shadow: 0 0 15px #ff2d75;
+}
+
+.controls {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.control-btn {
+  padding: 12px 25px;
+  background: rgba(255, 45, 117, 0.3);
+  border: 2px solid #ff2d75;
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.control-btn:hover {
+  background: rgba(255, 45, 117, 0.7);
+  box-shadow: 0 0 15px #ff2d75;
+}
+
+.control-btn.active {
+  background: rgba(255, 45, 117, 0.7);
+  box-shadow: 0 0 15px #ff2d75;
+}
+
+@media (max-width: 768px) {
+  .slider-container {
+    height: 50vh;
+  }
+  
+  .slide {
+    width: 90%;
+    height: 90%;
+  }
+  
+  .slide.prev {
+    transform: translateX(-70%) scale(0.8);
+  }
+  
+  .slide.next {
+    transform: translateX(70%) scale(0.8);
+  }
+}
+
+/* Previous CSS remains the same */
+
+/* Updated end-note positioning */
+.end-note {
+  position: absolute;
+  bottom: 10px;
+  right: 20px; /* Changed from right to left */
+  color: #ff2d75;
+  font-size: 14px;
+  font-style: italic;
+  text-shadow: 0 0 5px rgba(255, 45, 117, 0.5);
+}
+
+@media (max-width: 768px) {
+  /* Other mobile styles remain the same */
+  
+  .end-note {
+    right: 10px; /* Changed from right to left */
+    font-size: 12px;
+  }
+}
+
+/* Previous CSS remains the same, add these new styles */
+
+.photo-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.modal-content {
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  margin: 5% auto;
+  animation: zoomIn 0.3s;
+}
+
+@keyframes zoomIn {
+  from {transform: scale(0.9);}
+  to {transform: scale(1);}
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #ff2d75;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.close-btn:hover {
+  color: white;
+  transform: scale(1.2);
+}
+
+.caption {
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 18px;
+}
+
+/* Add this to make slides clickable */
+.slide {
+  cursor: pointer;
+}
+

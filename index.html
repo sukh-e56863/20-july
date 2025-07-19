@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Birthday Surprise</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  
+  <audio id="romanticMusic" src="assets/audio/romantic.mp3" preload="auto" loop></audio>
+
+<div class="typing-scene">
+  
+  <audio id="typeSound" src="assets/audio/type.mp3" preload="auto"></audio>
+  <audio id="countSound" src="assets/audio/count.mp3" preload="auto"></audio>
+
+  <div class="heart-container"></div>
+
+  <div class="countdown" id="countdown">10</div>
+
+  <div class="message-box hidden">
+    <p id="typing-text"></p>
+    <button id="glow-button" class="glow-button hidden">Click to Begin</button>
+  </div>
+</div>
+
+<!-- Quiz Container -->
+<div class="quiz-container hidden">
+  <div id="quiz-question" class="quiz-question"></div>
+  <div id="quiz-answers" class="quiz-answers"></div>
+  <button id="submit-answer" class="submit-button hidden">Submit</button>
+</div>
+
+<!-- Quiz Report -->
+<div class="quiz-report hidden">
+  <h2>Your Progress</h2>
+  <div id="quiz-results"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
